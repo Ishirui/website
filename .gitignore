@@ -1,3 +1,6 @@
+# Generated types
+.astro/
+
 # Logs
 logs
 *.log
