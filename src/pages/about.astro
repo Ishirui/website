@@ -1,9 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+
+import "../styles/global.css";
+import Footer from "../components/Footer.astro";
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const skillColor = "blue";
 ---
 
 <Layout>
   <Navbar />
   <h1>About Me - CV</h1>
+  <p>Here are a few facts about me:</p>
+  <ul>
+    <li>My name is {identity.firstName}.</li>
+    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+    {
+      identity.hobbies.length >= 2 && (
+        <li>
+          Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}
+        </li>
+      )
+    }
+  </ul>
+  <p>My skills are:</p>
+  <ul>
+    {skills.map((skill) => <li>{skill}</li>)}
+  </ul>
+  <Footer />
+  <style
+    define:vars={{
+      skillColor: skillColor,
+    }}
+  >
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      color: var(--skillColor);
+    }
+  </style>
 </Layout>
